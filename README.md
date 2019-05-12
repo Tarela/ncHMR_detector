@@ -1,4 +1,4 @@
-# ncHMR_detector: a computational framework to systematically reveal al functions of histone-modification regulators
+# ncHMR_detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators
 
 Histone modification regulators (HMR) play important roles in many biological process and function by catalyzing or binding known histone modifications. Abundant studies mapped the genome-wide profiles of HMRs through ChIP-Seq and most of them only focused on the relationship between HMRs and their known histone modification substrates. However, there were still some studies showed that several HMRs can bind to  sites (defined as without colocalization of known histone modifications) which were involved in development, differentiation et al. Thus, ncHMR_detector is sepcifically designed for detecting non-classical function of given HMR and predicting the potential cofactors of the non-classical function.
 
@@ -86,7 +86,7 @@ The alpha parameters for elasticNet, choose from 0~1, 1 for lasso and 0 for ridg
 -  -\-LambdaChoice=LAMBDACHOICE
 Solution to determine Lambda (choose from 1se and min, default is 1se. "min" is the value at which the minimal mean squared error is achieved and "1se" is for the most regularized model whose mean squared error is within one standard error of the minimal.)
 -  -\-TopNcofactors=TOPNCOFACTORS
-TopN predicted cofactors with highest association with al function is reported (choose any number or all(default) to report topN predicted cofactors that pass the thresholds)
+TopN predicted cofactors with highest association with non-classical function is reported (choose any number or all(default) to report topN predicted cofactors that pass the thresholds)
 -  -\-overwrite
 Force overwrite, this cmd will rm existing result if set !!
 
@@ -94,7 +94,7 @@ Force overwrite, this cmd will rm existing result if set !!
 1. `NAME_summary.pdf` is the summary pdf file which contains information of:
      - Input file and parameter description
      - Cross validation curve from elastic-net feature selection
-     - Summary of predicted cofactors for al function (leave blank if no non-classical function was detected)
+     - Summary of predicted cofactors for non-classical function (leave blank if no non-classical function was detected)
      - Distribution (boxplot) of histone modificaion signal on classical and al funtion (defined by different cofactor candidates)
 
     \# Note: 
@@ -103,7 +103,7 @@ Force overwrite, this cmd will rm existing result if set !!
     3. You can check the `summary/` folder for all the other related results including the full cofactor list (see the following files)
 
 
-2. `summary/NAME_NCsummary.txt` is the full list of cofactors which are predicted to be significantly related to the al function of the given HMR. You can open it in excel and sort/filter using excel functions. Information include:
+2. `summary/NAME_NCsummary.txt` is the full list of cofactors which are predicted to be significantly related to the non-classical function of the given HMR. You can open it in excel and sort/filter using excel functions. Information include:
     - TFname: name of the cofactors, same as the name of peak files in the `--peakfolder`
     - HMname: name of the histone modification, useful when multiple histone modification bigWig files are provided. 
     - Pval: Empirical P-value from the permutation results
@@ -113,15 +113,15 @@ Force overwrite, this cmd will rm existing result if set !!
     
     \# Note: Terms were filtered by P-value and further sorted by the R-squared
 
-3. `summary/NAME_elnet_lambdaSelection.pdf` is the Cross validation curve from elastic-net feature selection
-4. `summary/NAME_cofactor_HMsignal.pdf` is the summary of predicted cofactors for al function (not generated if no non-classical function was detected)
+3. `summary/NAME_elnet_lambdaSelection.pdf` is the cross validation curve from elastic-net feature selection
+4. `summary/NAME_cofactor_HMsignal.pdf` is the summary of predicted cofactors for non-classical function (not generated if no non-classical function was detected)
 5. `summary/NAME_summary.tex` is the .tex file for generating latex pdf. You can also move the whole `summary/` folder to another OS with pdflatex and run the following cmd line to re-generate the summary pdf file. 
 ```sh
 $ pdflatex NAME_summary.tex
 ```
 
 ## 5. Testing data and example of output files
-We provided the testing data for users to test the flexibility and the power of the ncHMR_detector and the example of `summary.pdf` which generated from a new detected al function in our recent studies. Click the file names to download. 
+We provided the testing data for users to test the flexibility and the power of the ncHMR_detector and the example of `summary.pdf` which generated from a new detected non-classical function in our recent studies. Click the file names to download. 
 - HMRpeaks(CBX7)
 [Dropbox](https://www.dropbox.com/s/1kkow0nnmtkinv1/mESC_GSM1562337_CBX7.bed?dl=0)
 [TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_GSM1562337_CBX7.bed)
