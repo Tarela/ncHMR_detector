@@ -290,13 +290,13 @@ if(is.null(summary_table)){
     ## for each predicted coTFvsHM pair, output the cobinding NC sites as a bed file
     if(!file.exists("nonClassicPeaks/")){dir.create("nonClassicPeaks")}
     if(topN == 1){
-        pdf(file=paste0(outname,"_coTF_HMsignal.pdf"),height=6,width=6)
+        pdf(file=paste0(outname,"_cofactor_HMsignal.pdf"),height=6,width=6)
         par(mar=c(4,4,2,2))    
     }else if(topN == 2){
-        pdf(file=paste0(outname,"_coTF_HMsignal.pdf"),height=6,width=12)
+        pdf(file=paste0(outname,"_cofactor_HMsignal.pdf"),height=6,width=12)
         par(mfrow=c(1,2),mar=c(4,4,2,2))
     }else{
-        pdf(file=paste0(outname,"_coTF_HMsignal.pdf"),height=12,width=12)
+        pdf(file=paste0(outname,"_cofactor_HMsignal.pdf"),height=12,width=12)
         par(mfrow=c(2,2),mar=c(4,4,2,2))
     }
     num_NCsites <- c()
