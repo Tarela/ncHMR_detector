@@ -10,18 +10,18 @@ ncHMR_detector requires [python](https://www.python.org) v2.7 and [R](https://ww
 
 \# for root user
 ```sh
-$ cd HMR/ncHMR_detector_v1.0/
+$ cd ncHMR_detector/ncHMR_detector_v1.0/
 $ sudo python setup.py install  
 ```
 \# if you are not root user, you can install ncHMR_detector at a specific location which you have write permission
 ```sh
-$ python setup.py install --prefix /home/HMR  # here you can replace “/home/HMR” with any location 
-$ export PATH=/home/HMR/bin:$PATH    # setup PATH for the software
-$ export PYTHONPATH=/home/HMR/lib/python2.7/site-packages:$PYTHONPATH    # setup PYTHONPATH for module import
+$ python setup.py install --prefix /home/ncHMR_detector  # here you can replace “/home/ncHMR_detector” with any location 
+$ export PATH=/home/ncHMR_detector/bin:$PATH    # setup PATH for the software
+$ export PYTHONPATH=/home/ncHMR_detector/lib/python2.7/site-packages:$PYTHONPATH    # setup PYTHONPATH for module import
 ```
 \# To check the ncHMR_detector package, just type:
 ```sh
-$ HMR --help  # If you see help manual, you have successfully installed the ncHMR_detector
+$ ncHMR_detector --help  # If you see help manual, you have successfully installed the ncHMR_detector
 ```
 \# Install pdflatex 
 Before you start running, ncHMR_detector will check your computer for pdflatex. If you have already installed pdflatex, ncHMR_detector will generate a summary report in addition to regular outputs and analysis results.
