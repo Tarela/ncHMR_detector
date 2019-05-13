@@ -43,8 +43,8 @@ def step3_summary(conf_dict,logfile):
     createDIR(summarydir)
     sp("mv %s_NCsummary.txt %s"%(conf_dict['General']['outname'],summarydir))
     sp("mv %s_elnet_lambdaSelection.pdf %s"%(conf_dict['General']['outname'],summarydir))
-    if os.path.isfile("%s_coTF_HMsignal.pdf"%conf_dict['General']['outname']):
-        sp("mv %s_coTF_HMsignal.pdf %s"%(conf_dict['General']['outname'],summarydir))
+    if os.path.isfile("%s_cofactor_HMsignal.pdf"%conf_dict['General']['outname']):
+        sp("mv %s_cofactor_HMsignal.pdf %s"%(conf_dict['General']['outname'],summarydir))
 
     tmpresult = 'tmpResults/'
     createDIR(tmpresult)
@@ -92,7 +92,7 @@ HMRpeak(peak filename) & %s \\\\
 \hline
 HM signal(bw filename) & \\begin{tabular}[c]{@{}l@{}}%s\end{tabular}  \\\\
 \hline
-\#coTF candidates & %s \\\\
+\#cofactor candidates & %s \\\\
 \hline
 options & value \\\\
 \hline
@@ -187,7 +187,7 @@ Boxplot was generated to compare the difference of the histone mark (HM) signal 
         \centering
         {\includegraphics[width=0.8\\textwidth]{%s}}
 \end{figure}
-"""%((conf_dict['General']['outname']+"_coTF_HMsignal.pdf"))
+"""%((conf_dict['General']['outname']+"_cofactor_HMsignal.pdf"))
 
     QCdoc += """
 \\newpage
