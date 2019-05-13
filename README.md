@@ -129,7 +129,7 @@ We provided the testing data for users to test the flexibility and the power of 
 [Dropbox](https://www.dropbox.com/s/c5h9qf3qvetfe2s/mESC_GSM1399500_H3K27me3.bw?dl=0)
 [TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_GSM1399500_H3K27me3.bw)
 - Summary(output): 
-[Dropbox](https://www.dropbox.com/s/7yitjhnclxrvk2l/mESC_GSM1562337_CBX7_summary.pdf?dl=0)
+[Dropbox](https://www.dropbox.com/s/cagfxfhdjq2hksg/mESC_GSM1562337_CBX7_summary.pdf?dl=0)
 [TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_GSM1562337_CBX7_summary.pdf)
 
 
