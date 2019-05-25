@@ -9,6 +9,7 @@ with the distribution).
 import os
 import sys
 import subprocess
+import platform
 from distutils.core import setup, Extension
 
 
@@ -47,6 +48,15 @@ def main():
     if has_R == 0:
 	    print >> sys.stderr, "ERROR: ncHMR_detector requires R & Rscript under default PATH"
 	    sys.exit()
+
+    OS = platform.system()
+    if OS == "Linux":
+        bwsum_software = "bigWigSummary_linux"
+    elif OS == "Darwin":
+        bwsum_software = "bigWigSummary_mac"
+    else:
+        wlog("detected system is nither linux nor mac, try linux version of bigWigSummary",logfile)
+        bwsum_software = "bigWigSummary_linux"
         
     has_bedtools = check_bedtools()
     print 'Intalling ncHMR_detector, may take "serval" minutes'
@@ -66,7 +76,7 @@ def main():
                                       #'Rscript/readsbulkQC.r',
                                       #'Rscript/detectNonCanonical.r'
                                          ]},
-              scripts=['bin/ncHMR_detector','refpackage/bedtools/bin/bedtools','refpackage/bwsummary/bigWigSummary_linux','refpackage/bwsummary/bigWigSummary_mac'],
+              scripts=['bin/ncHMR_detector','refpackage/bedtools/bin/bedtools','refpackage/bwsummary/%s'%bwsum_software],
                         
               classifiers=[
             'Development Status :: version1.0 finish',
@@ -97,7 +107,7 @@ def main():
                                       #'Rscript/readsbulkQC.r',
                                       #'Rscript/detectNonCanonical.r'
                                          ]},
-              scripts=['bin/ncHMR_detector','refpackage/bwsummary/bigWigSummary_linux','refpackage/bwsummary/bigWigSummary_mac'],
+              scripts=['bin/ncHMR_detector','refpackage/bwsummary/%s'%bwsum_software],
                         
               classifiers=[
             'Development Status :: version1.0 finish',

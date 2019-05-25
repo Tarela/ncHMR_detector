@@ -121,7 +121,7 @@ $ pdflatex NAME_summary.tex
 ```
 
 ## 5. Testing data and example of output files
-We provided the testing data for users to test the flexibility and the power of the ncHMR_detector and the example of `summary.pdf` which generated from a new detected non-classical function in our recent studies. Click the file names to download. 
+We provided the testing data (in mouse ESC) for users to test the flexibility and the power of the ncHMR_detector and the example of `summary.pdf` which generated from a new detected non-classical function in our recent studies. Click the file names to download. 
 - HMRpeaks(CBX7)
 [Dropbox](https://www.dropbox.com/s/1kkow0nnmtkinv1/mESC_GSM1562337_CBX7.bed?dl=0)
 [TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_GSM1562337_CBX7.bed)
