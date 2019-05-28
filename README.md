@@ -34,8 +34,10 @@ $ apt-get install texlive-all
 
 
 \# NOTE: 
-- To install ncHMR_detector on MacOS, users need to download and install Command Line Tools beforehand
-- ncHMR_detector requires R package [glmnet](https://cran.r-project.org/web/packages/glmnet/index.html) pre-installed (otherwise the software will install glmnet in a temporary directory everytime)
+- To install ncHMR_detector on MacOS, users need to download and install Command Line Tools beforehand.
+- ncHMR_detector requires [bedtools](https://github.com/arq5x/bedtools2/) pre-installed (otherwise the software will install bedtools to the same folder as ncHMR_detector).
+- ncHMR_detector requires R package [glmnet](https://cran.r-project.org/web/packages/glmnet/index.html) pre-installed (otherwise the software will install glmnet in a temporary directory everytime).
+
 
 ## 2. Download pre-processed database
 Download our pre-processed database for the binding sites of histone modification regulators (HMR) and transcription factors (TF) in different cell types/cell lines. The genome-wide binding sites for TFs and HMRs are defined by published ChIP-seq data. We collected data for all the TFs and HMRs with available ChIP-seq data in public domain, processed and generated a peak file for each TF in each cell line. Users can download the binding sites of all the TFs and HMRs in given cell types and input the absolute path of the folder as a parameter of ncHMR_detector (-f, --peakfolder). Users can also customarize the database by adding additional peak files for the specific TFs and HMRs they interested in as the potential candidates of cofactors. Currently the built-in database support: 

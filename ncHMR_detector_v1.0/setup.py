@@ -59,7 +59,7 @@ def main():
         bwsum_software = "bigWigSummary_linux"
         
     has_bedtools = check_bedtools()
-    print 'Intalling ncHMR_detector, may take "serval" minutes'
+    print 'Intalling ncHMR_detector, may take "several" minutes'
     if has_bedtools == 0:
         compile_bedtools()
         setup(name="HMRpipe",
@@ -67,7 +67,7 @@ def main():
               description="ncHMR detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators",
               author='Shengen Hu',
               author_email='Tarelahu@gmail.com',
-              url='https://github.com/Tarela/HMR.git',
+              url='https://github.com/Tarela/ncHMR_detector.git',
               package_dir={'HMRpipe' : 'lib'},
               packages=['HMRpipe'],
               package_data={'HMRpipe': [#'Config/template.conf',
@@ -98,7 +98,7 @@ def main():
               description="ncHMR detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators",
               author='Shengen Hu',
               author_email='Tarelahu@gmail.com',
-              url='https://github.com/Tarela/HMR.git',
+              url='https://github.com/Tarela/ncHMR_detector.git',
               package_dir={'HMRpipe' : 'lib'},
               packages=['HMRpipe'],
               package_data={'HMRpipe': [#'Config/template.conf',
