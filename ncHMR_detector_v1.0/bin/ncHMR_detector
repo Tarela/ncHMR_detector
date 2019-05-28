@@ -60,7 +60,7 @@ def main():
     '''
     Read parameter 
     '''
-    usage = "%prog -p HMRpeak.bed -s HMsig.bw -f TFovFolder -o outputname"
+    usage = "%prog -p HMRpeak.bed -s HMsig.bw -f peakFolder -o outputname"
     description = """ncHMR detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators"""
 
     optparser = OptionParser(version="%prog initver",description=description,usage=usage,add_help_option=False)
@@ -72,7 +72,7 @@ def main():
     optparser.add_option("-s","--Signal",dest="signal",type="str",
                          help="Signal track for genome-wide HM substrate signal (bigwig format), comma separated for multiple HM substrate (each substrate accept ONLY 1 bw file)")
     optparser.add_option("-f","--peakFolder",dest="peakFolder",type="str",
-                         help="Folder for peak files of potential co-factors, ABSOLUTE path")
+                         help="Folder for peak files of potential cofactors, ABSOLUTE path")
     optparser.add_option("-o","--outname",dest="outname",type="str",default = "NA",
                          help="Name (prefix) of output results and output directory, default is NA")
     #optparser.add_option("-c","--control",dest="control",type="str",default = "NA",
@@ -87,7 +87,7 @@ def main():
     optparser.add_option("--LambdaChoice",dest="LambdaChoice",type="choice",choices=["1se","min"],default = "1se",
                          help="[optional] Solution to determine Lambda (choose from 1se and min, default is 1se)")
     optparser.add_option("--TopNcofactors",dest="TopNcofactors",type="str",default="all",
-                         help="[optional] TopN predicted co-factors with highest association with non-classic function is reported (choose any number or all(default) to report topN predicted co-factors that pass the thresholds)")
+                         help="[optional] TopN predicted cofactors with highest association with non-classic function is reported (choose any number or all(default) to report topN predicted cofactors that pass the thresholds)")
 
     optparser.add_option("--overwrite",dest='fover',  default=False, action='store_true', 
                          help = "[optional] force overwrite, this cmd will rm existing result if set !! " )
@@ -106,7 +106,7 @@ def main():
 
     if not options.peakFolder:
         optparser.print_help()
-        print 'Folder for co-factor peak files (-f/--peakFolder) is required'
+        print 'Folder for cofactor peak files (-f/--peakFolder) is required'
         sys.exit(1)
 
     conf_dict = {}

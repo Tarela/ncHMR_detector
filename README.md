@@ -74,7 +74,7 @@ output name, prefix name of your output files
 
 Example for run ncHMR_detector with all default parameters:
 ```sh
-$ ncHMR_detector -p /${path}/HMRpeak.bed -s /${path}/HMsignal.bw -f /${path}/K562_peaks/ -o outputname
+$ ncHMR_detector -p ${path}/mESC_GSM1562337_CBX7.bed -s ${path}/mESC_GSM1399500_H3K27me3.bw -f ${path}/mESC_peaks/ -o mESC_GSM1562337_CBX7
 ```
 
 #### Options
@@ -123,7 +123,7 @@ $ pdflatex NAME_summary.tex
 ```
 
 ## 5. Testing data and example of output files
-We provided the testing data (in mouse ESC) for users to test the flexibility and the power of the ncHMR_detector and the example of `summary.pdf` which generated from a new detected non-classical function in our recent studies. Click the file names to download. 
+We provided the testing data (in mouse ESC) for users to test the flexibility and the power of the ncHMR_detector and the example of `summary.pdf` which generated from a new detected non-classical function in our recent studies (using the example cmd line in step 3). Click the file names to download. 
 - HMRpeaks(CBX7)
 [Dropbox](https://www.dropbox.com/s/1kkow0nnmtkinv1/mESC_GSM1562337_CBX7.bed?dl=0)
 [TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_GSM1562337_CBX7.bed)

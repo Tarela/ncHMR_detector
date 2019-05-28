@@ -123,7 +123,7 @@ signal2cutoff <- function(rawsig){
     # output the grouping result: list contains 3 items 
     # item1: NC cutoff
     # item2: 2 column for cutoff candidates and corresponded G
-    # item3: Nrow = peak number,Ncolumn = 2, c1 for signal, c2 for group number, 0 for lowHM group (solo, non-classical), 1 for highHM group (ensemble, classic)
+    # item3: Nrow = peak number,Ncolumn = 2, c1 for signal, c2 for group number, 0 for lowHM group (solo, non-classical), 1 for highHM group (ensemble, classical)
     
     return(list(NCcut, cbind(Gbins,G), cbind(rawsig, group_detail) ))
 }
@@ -288,7 +288,7 @@ if(is.null(summary_table)){
     colnames(peakgroup) <- colnames(Y)
 
     ## for each predicted coTFvsHM pair, output the cobinding NC sites as a bed file
-    if(!file.exists("nonClassicPeaks/")){dir.create("nonClassicPeaks")}
+    if(!file.exists("nonClassicalPeaks/")){dir.create("nonClassicalPeaks")}
     if(topN == 1){
         pdf(file=paste0(outname,"_cofactor_HMsignal.pdf"),height=6,width=6)
         par(mar=c(4,4,2,2))    
@@ -306,12 +306,12 @@ if(is.null(summary_table)){
         coTF_cobinding <- X[,coTF]
         HMnc <- peakgroup[,substrateHM]
         cobinding_NC_peak <- peakX[which(coTF_cobinding>0 & HMnc == 0),]
-        write.table(cobinding_NC_peak, file=paste0("nonClassicPeaks/",outname,"_",coTF,"_",substrateHM,"_top",topnum,"nonclassic_peaks.bed"),quote=F,sep="\t",row.names=F,col.names=F)
+        write.table(cobinding_NC_peak, file=paste0("nonClassicalPeaks/",outname,"_",coTF,"_",substrateHM,"_top",topnum,"nonclassical_peaks.bed"),quote=F,sep="\t",row.names=F,col.names=F)
         num_NCsites <- c(num_NCsites, nrow(cobinding_NC_peak))
         if(topnum %in% 1:4){
-            ## boxplot compare the histone modification signal between on classic and non-classical peaks
+            ## boxplot compare the histone modification signal between on classical and non-classical peaks
             boxplot(Y[which(coTF_cobinding>0 & HMnc == 0)],Y[which(coTF_cobinding==0 | HMnc > 0)],
-                names=c("non-classical peak","classic peak"),ylab=paste0(substrateHM," signal"),main=paste0(coTF," & ",substrateHM),
+                names=c("non-classical peak","classical peak"),ylab=paste0(substrateHM," signal"),main=paste0(coTF," & ",substrateHM),
                 outline=F,cex.main=1)
             legend("topleft",legend=paste0("#NCpeak = ",nrow(cobinding_NC_peak)),bty="n")
         }
