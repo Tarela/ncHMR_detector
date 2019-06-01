@@ -43,16 +43,12 @@ $ apt-get install texlive-all
 Download our pre-processed database for the binding sites of histone modification regulators (HMR) and transcription factors (TF) in different cell types/cell lines. The genome-wide binding sites for TFs and HMRs are defined by published ChIP-seq data. We collected data for all the TFs and HMRs with available ChIP-seq data in public domain, processed and generated a peak file for each TF in each cell line. Users can download the binding sites of all the TFs and HMRs in given cell types and input the absolute path of the folder as a parameter of ncHMR_detector (-f, --peakfolder). Users can also customarize the database by adding additional peak files for the specific TFs and HMRs they interested in as the potential candidates of cofactors. Currently the built-in database support: 
 - K562 (hg38) 
 [Dropbox](https://www.dropbox.com/s/8wvnvzqz6xdf81h/K562_peaks.tar.gz?dl=0) 
-[TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/K562_peaks.tar.gz) 
 - GM12878 (hg38) 
 [Dropbox](https://www.dropbox.com/s/uxhor96sd61afv9/GM12878_peaks.tar.gz?dl=0) 
-[TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/GM12878_peaks.tar.gz)  
 - human ESC (hg38) 
 [Dropbox](https://www.dropbox.com/s/rrw908zvn895vx4/hESC_peaks.tar.gz?dl=0) 
-[TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/hESC_peaks.tar.gz)  
 - mouse ESC (mm10) 
 [Dropbox](https://www.dropbox.com/s/j6m07xaxilvg7v4/mESC_peaks.tar.gz?dl=0) 
-[TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_peaks.tar.gz)  
 
 You can download by simply click the link on the cell type name and use the following command to extract the folder:
 ```sh
@@ -126,13 +122,10 @@ $ pdflatex NAME_summary.tex
 We provided the testing data (in mouse ESC) for users to test the flexibility and the power of the ncHMR_detector and the example of `summary.pdf` which generated from a new detected non-classical function in our recent studies (using the example cmd line in step 3). Click the file names to download. 
 - HMRpeaks(CBX7)
 [Dropbox](https://www.dropbox.com/s/1kkow0nnmtkinv1/mESC_GSM1562337_CBX7.bed?dl=0)
-[TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_GSM1562337_CBX7.bed)
 - Signal(H3K27me3) 
 [Dropbox](https://www.dropbox.com/s/c5h9qf3qvetfe2s/mESC_GSM1399500_H3K27me3.bw?dl=0)
-[TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_GSM1399500_H3K27me3.bw)
 - Summary(output): 
 [Dropbox](https://www.dropbox.com/s/cagfxfhdjq2hksg/mESC_GSM1562337_CBX7_summary.pdf?dl=0)
-[TongjiServer](http://compbio.tongji.edu.cn/compbio/public/HMR/mESC_GSM1562337_CBX7_summary.pdf)
 
 
 ## 6. Change log
