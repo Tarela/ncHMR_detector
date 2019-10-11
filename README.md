@@ -84,8 +84,8 @@ We also provided pre-processed bigwig tracks for users who are interested in the
 
 You can download by simply click the link above and use the following command to extract the folder:
 ```sh
-$ tar xvzf K562_peaks.tar.gz
-$ tar xvf K562_peaks.tar  # used when your OS uncompress the package automatically
+$ tar xvzf mESC_peaks.tar.gz
+$ tar xvf mESC_peaks.tar  # used when your OS uncompress the package automatically
 ```
 
 ## 3. Run ncHMR_detector (usage)
@@ -109,13 +109,13 @@ Example for run ncHMR_detector with all default parameters:
 
 binary mode (default)
 ```sh
-$ ncHMR_detector -p ${path}/HMRpeak.bed -s ${path}/HMsignal.bw -f ${path}/K562_peaks/ -o outputname
+$ ncHMR_detector -p ${path}/HMRpeak.bed -s ${path}/HMsignal.bw -f ${path}/mESC_peaks/ -o outputname
 ```
 
 
 signal mode (optional)
 ```sh
-$ ncHMR_detector -p ${path}/HMRpeak.bed -s ${path}/HMsignal.bw -f ${path}/K562_peaks/ -o outputname -m signal -b ${path}/K562_bw/
+$ ncHMR_detector -p ${path}/HMRpeak.bed -s ${path}/HMsignal.bw -f ${path}/mESC_peaks/ -o outputname -m signal -b ${path}/mESC_bw/
 ```
 
 
