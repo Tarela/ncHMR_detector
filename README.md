@@ -82,7 +82,7 @@ We also provided pre-processed bigwig tracks for users who are interested in the
 [Dropbox](https://www.dropbox.com/s/4hvyxqfxanzoa8f/mESC_bw.tar.gz?dl=0) 
 [TongjiServer](http://compbio-zhanglab.org/release/mESC_bw.tar.gz)  
 
-You can download by simply click the link on the cell type name and use the following command to extract the folder:
+You can download by simply click the link above and use the following command to extract the folder:
 ```sh
 $ tar xvzf K562_peaks.tar.gz
 $ tar xvf K562_peaks.tar  # used when your OS uncompress the package automatically
@@ -105,11 +105,11 @@ Different mode of ncHMR_detector, choose frombinary(default) and signal. Binary 
 (specify this parameter when using signal mode) Folder for cofactor bw signal tracks. Only take effect in signal (-m signal). Input the ABSOLUTE directory of bw files with this parameter, in order to use the signal of cofactors to predict the non-calssical function instead of peak overlap. Note that the files in the bwfolder should end with .bw and have the same name as the one in peak folder.
 
 Example for run ncHMR_detector with all default parameters:
-binary mode (default)
+- binary mode (default)
 ```sh
 $ ncHMR_detector -p /abspath/HMRpeak.bed -s /abspath/HMsignal.bw -f /abspath/K562_peaks/ -o outputname
 ```
-signal mode (optional)
+- signal mode (optional)
 ```sh
 $ ncHMR_detector -p /abspath/HMRpeak.bed -s /abspath/HMsignal.bw -f /abspath/K562_peaks/ -o outputname -m signal -b /abspath/K562_bw/
 ```
@@ -172,9 +172,9 @@ We provided the testing data for users to test the flexibility and the power of 
 For those users who only have python3 on their machine, we now provided python3 version of ncHMR_detector! Simply go to the "ncHMR_detector_v1.3_py3" folder and install the package with python3. Note that the python3 version of ncHMR_detector is called "ncHMR_detector_py3". And users may need to pre-define the python3 enviroment/library before using the py3 version (see step1 as reference). 
 
 ## 7. Change log
-v1.0 (2019.01.10) The first released version, which generates the results of the paper
-v1.1 (2019.04.10) Fully documented, for paper submission 
-v1.2 (2019.09.10) Add signal mode and other details according to the reviewers' suggestions
-v1.3 (2019.10.01) Add python3 version as the reviewer suggested
+- v1.0 (2019.01.10) The first released version, which generates the results of the paper
+- v1.1 (2019.04.10) Fully documented, for paper submission 
+- v1.2 (2019.09.10) Add signal mode and other details according to the reviewers' suggestions
+- v1.3 (2019.10.01) Add python3 version as the reviewer suggested
 
 
