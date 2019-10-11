@@ -1,11 +1,11 @@
-# ncHMR_detector: Detecting non-classic function of histone modification regulator with ChIP-seq intergration
+# ncHMR_detector: Detecting non-classical function of histone modification regulator with ChIP-seq intergration
 
 Histone modification regulators (HMR) play important roles in many biological process and function by catalyzing or binding known histone modifications. Abundant studies mapped the genome-wide profiles of HMRs through ChIP-Seq and most of them only focused on the relationship between HMRs and their known histone modification substrates. However, there were still some studies showed that several HMRs can bind to non-classic sites (defined as without colocalization of known histone modifications) which were involved in development, differentiation et al. Thus, HMRpipe is sepcifically designed for detecting non-classic function of given HMR and predicting the potential co-factors of the non-classic function.
 
 Idea of HMR non-classic function and the workflow for detection
 ![GitHub Logo](image/workflow.png)
 
-## 0. Try our new webserver!
+## 0. Webserver version!
 In case you don't want to install and run ncHMR_detector on your own machine but still interested in our method, we provided our new webserver for the online detection of the non-classical function. Simply provided us the data of your interested TF (ChIP-seq or other associated data) and we will do all the detections and explorations for you!
 Get more information and try our webserver at [ncHMR web detector](http://compbio-zhanglab.org/ncHMR_detector/index.php)
 
@@ -172,7 +172,7 @@ We provided the testing data for users to test the flexibility and the power of 
 - signal: [`Dropbox`](https://www.dropbox.com/s/c5h9qf3qvetfe2s/mESC_GSM1399500_H3K27me3.bw?dl=0)
 - summary (output): [`Dropbox`](https://www.dropbox.com/s/cagfxfhdjq2hksg/mESC_GSM1562337_CBX7_summary.pdf?dl=0)
 
-## 6. New python3 version comes!
+## 6. Python3 version releases!
 For those users who only have python3 on their machine, we now provided python3 version of ncHMR_detector! Simply go to the "ncHMR_detector_v1.3_py3" folder and install the package with python3. Note that the python3 version of ncHMR_detector is called "ncHMR_detector_py3". And users may need to pre-define the python3 enviroment/library before using the py3 version (see step1 as reference). 
 
 ## 7. Change log
