@@ -3,7 +3,7 @@
 Histone modification regulators (HMR) play important roles in many biological process and function by catalyzing or binding known histone modifications. Abundant studies mapped the genome-wide profiles of HMRs through ChIP-Seq and most of them only focused on the relationship between HMRs and their known histone modification substrates. However, there were still some studies showed that several HMRs can bind to non-classic sites (defined as without colocalization of known histone modifications) which were involved in development, differentiation et al. Thus, HMRpipe is sepcifically designed for detecting non-classic function of given HMR and predicting the potential co-factors of the non-classic function.
 
 Idea of HMR non-classic function and the workflow for detection
-![GitHub Logo](image/workflow.png)
+![GitHub Logo](old_versions/image/workflow.png)
 
 ## 0. Webserver version!
 In case you don't want to install and run ncHMR_detector on your own machine but still interested in our method, we provided our new webserver for the online detection of the non-classical function. Simply provided us the data of your interested TF (ChIP-seq or other associated data) and we will do all the detections and explorations for you!
