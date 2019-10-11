@@ -53,17 +53,17 @@ def step3_summary(conf_dict,logfile):
     sp("mv %s_cofactor_candidate_list.txt %s"%(conf_dict['General']['outname'],tmpresult))
     sp("mv %s_filterNC.txt %s"%(conf_dict['General']['outname'],tmpresult))
 
-    if conf_dict['General']['mode'] != "peak":
+    if conf_dict['General']['mode'] != "binary":
         sp("mv %s_TFsig.bed %s"%(conf_dict['General']['outname'],tmpresult))
 
     wlog('generate summary documents',logfile)
     ### initiate 
     QCdoc = """\documentclass[11pt,a4paper]{article}
-\usepackage{tabularx}
-\usepackage[english]{babel}
-\usepackage{array}
-\usepackage{graphicx}
-\usepackage{color}
+\\usepackage{tabularx}
+\\usepackage[english]{babel}
+\\usepackage{array}
+\\usepackage{graphicx}
+\\usepackage{color}
 \DeclareGraphicsExtensions{.eps,.png,.pdf,.ps}
 \\begin{document}
 \\title{Summary reports of non-classical function detection of : %s}

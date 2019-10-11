@@ -10,7 +10,8 @@ import os
 import sys
 import subprocess
 import platform
-from distutils.core import setup, Extension
+#from distutils.core import setup, Extension
+from setuptools import setup, find_packages
 
 
 def sp(cmd):
@@ -41,12 +42,12 @@ def check_R():
     else:
         return 1       
 def main(): 
-    if sys.version_info[0] != 2 or sys.version_info[1] < 7:
-	    print >> sys.stderr, "ERROR: ncHMR_detector requires Python 2.7"
-	    sys.exit()
+#    if sys.version_info[0] != 2 or sys.version_info[1] < 7:
+#	    print >> sys.stderr, "ERROR: ncHMR_detector requires Python 2.7"
+#	    sys.exit()
     has_R = check_R()
     if has_R == 0:
-	    print >> sys.stderr, "ERROR: ncHMR_detector requires R & Rscript under default PATH"
+	    print("ERROR: ncHMR_detector requires R & Rscript under default PATH", file=sys.stderr)
 	    sys.exit()
 
     OS = platform.system()
@@ -59,11 +60,11 @@ def main():
         bwsum_software = "bigWigSummary_linux"
         
     has_bedtools = check_bedtools()
-    print 'Intalling ncHMR_detector, may take "several" minutes'
+    print('Intalling ncHMR_detector, may take "several" minutes')
     if has_bedtools == 0:
         compile_bedtools()
         setup(name="HMRpipe",
-              version="1.0",
+              version="1.3",
               description="ncHMR detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators",
               author='Shengen Hu',
               author_email='Tarelahu@gmail.com',
@@ -76,10 +77,10 @@ def main():
                                       #'Rscript/readsbulkQC.r',
                                       #'Rscript/detectNonCanonical.r'
                                          ]},
-              scripts=['bin/ncHMR_detector','refpackage/bedtools/bin/bedtools','refpackage/bwsummary/%s'%bwsum_software],
+              scripts=['bin/ncHMR_detector_py3','refpackage/bedtools/bin/bedtools','refpackage/bwsummary/%s'%bwsum_software],
                         
               classifiers=[
-            'Development Status :: version1.0 finish',
+            'Development Status :: version1.3 finish',
             'Environment :: Console',
             'Intended Audience :: Developers',
             'License :: OSI Approved :: Artistic License',
@@ -89,28 +90,31 @@ def main():
             ],
               requires=[],
           )
-        print 'bedtools is not detected under default PATH, bedtools is also installed'
-        print 'Installation of ncHMR_detector is DONE'
+        print('bedtools is not detected under default PATH, bedtools is also installed')
+        print('Installation of ncHMR_detector is DONE')
     
     else:
+        print("AAAAA\n\n\nAAAA")
         setup(name="HMRpipe",
-              version="1.0",
+              version="1.3",
               description="ncHMR detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators",
               author='Shengen Hu',
               author_email='Tarelahu@gmail.com',
               url='https://github.com/Tarela/ncHMR_detector.git',
               package_dir={'HMRpipe' : 'lib'},
               packages=['HMRpipe'],
-              package_data={'HMRpipe': [#'Config/template.conf',
+              #package_data={}
+              package_data={'lib/': ['%s'%bwsum_software]},#,#'Config/template.conf',
                                       #'Rscript/analysis.r',
                                       #'Rscript/individual_qc.r',
                                       #'Rscript/readsbulkQC.r',
                                       #'Rscript/detectNonCanonical.r'
-                                         ]},
-              scripts=['bin/ncHMR_detector','refpackage/bwsummary/%s'%bwsum_software],
-                        
+                                      #   ]},
+              #scripts=['bin/ncHMR_detector_py3','refpackage/bwsummary/%s'%bwsum_software],
+              scripts=['bin/ncHMR_detector_py3'],#,'refpackage/bwsummary/%s'%bwsum_software],
+              #data_files=[('/Users/sh8tv/bin',['refpackage/bwsummary/%s'%bwsum_software])],
               classifiers=[
-            'Development Status :: version1.0 finish',
+            'Development Status :: version1.3 finish',
             'Environment :: Console',
             'Intended Audience :: Developers',
             'License :: OSI Approved :: Artistic License',
@@ -120,7 +124,7 @@ def main():
             ],
               requires=[],
           )
-        print 'Installation of ncHMR_detector is DONE'
+        print('Installation of ncHMR_detector is DONE')
 
 
 if __name__ == '__main__':

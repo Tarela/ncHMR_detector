@@ -90,23 +90,29 @@ def step0_check_data(conf_dict,logfile):
     if not os.path.isdir(conf_dict['General']['peakFolder']):
         ewlog("Folder %s not found"%(conf_dict['General']['peakFolder']),logfile)
 
-    conf_dict['General']['mode'] = "peak"
-    if conf_dict['General']['bwfolder']:
-        wlog("bwFolder is specified, checking data for signal mode",logfile)
-        conf_dict['General']['mode'] = "signal"
-        if "~" in conf_dict['General']['bwfolder']:
-            wlog('require absolute path for bwFolder, bwFolder cannot contain "~", current Folder is %s, use peak mode'%(conf_dict['General']['bwfolder']),logfile)
-            conf_dict['General']['mode'] = "peak"
+    if conf_dict['General']['mode'] == "signal":
+        wlog("signal mode is activated",logfile)
+        if conf_dict['General']['bwfolder']:
+            wlog("bwFolder is specified, checking data for signal mode",logfile)
+            if "~" in conf_dict['General']['bwfolder']:
+                wlog('require absolute path for bwFolder, bwFolder cannot contain "~", current Folder is %s, use peak mode'%(conf_dict['General']['bwfolder']),logfile)
+                conf_dict['General']['mode'] = "binary"
+            else:
+                if not conf_dict['General']['bwfolder'].startswith('/'):
+                    conf_dict['General']['bwfolder'] = conf_dict['General']['startdir'] + conf_dict['General']['bwfolder']
+                if not conf_dict['General']['bwfolder'].endswith('/'):
+                    conf_dict['General']['bwfolder'] += "/"
+                if not os.path.isdir(conf_dict['General']['bwfolder']):
+                    wlog("bwFolder %s not found, use binary mode"%(conf_dict['General']['peakFolder']),logfile)
+                    conf_dict['General']['mode'] = "binary"
         else:
-            if not conf_dict['General']['bwfolder'].startswith('/'):
-                conf_dict['General']['bwfolder'] = conf_dict['General']['startdir'] + conf_dict['General']['bwfolder']
-            if not conf_dict['General']['bwfolder'].endswith('/'):
-                conf_dict['General']['bwfolder'] += "/"
-            if not os.path.isdir(conf_dict['General']['bwfolder']):
-                wlog("bwFolder %s not found, use peak mode"%(conf_dict['General']['peakFolder']),logfile)
-                conf_dict['General']['mode'] = "peak"
+            wlog("bwfolder is not specified, use binary mode",logfile)
+            conf_dict['General']['mode'] = "binary"
+    else:
+        wlog("binary mode is activaed",logfile)
 
-    wlog("Check the peak.bed/signal.bw files in the Folder, only '.bed' files with >1000 peaks (or '.bw' files) are included in the following analysis",logfile)
+
+    wlog("Check the peak.bed files in the Folder, only '.bed' files with >1000 peaks are included in the following analysis",logfile)
     conf_dict['General']['peakfilenames'] = []
     for f in os.listdir(conf_dict['General']['peakFolder']):
         if f.endswith(".bed") and os.path.isfile(conf_dict['General']['peakFolder']+f):
@@ -115,7 +121,7 @@ def step0_check_data(conf_dict,logfile):
                 conf_dict['General']['peakfilenames'].append(f[:-4])
 
     if (len(conf_dict['General']['peakfilenames']) == 0):
-        ewlog("no peak/track file (cofactor candidate) in (bed format & >1000peaks)/(bw format) are included, exit",logfile)
+        ewlog("no peak file (cofactor candidate) in (bed format & >1000peaks) are included, exit",logfile)
 
     if conf_dict['General']['mode'] == "signal":
         conf_dict['General']['bwfilenames'] = []
@@ -129,12 +135,12 @@ def step0_check_data(conf_dict,logfile):
                 conf_dict['General']['usefilename'].append(name)
         ### if less than 50% peakfiles share name with bwfiles, change back to peak mode
         if len(conf_dict['General']['usefilename']) < len(conf_dict['General']['peakfilenames'])*0.5:
-            conf_dict['General']['mode'] = "peak"
-            wlog("the number of shared peak&bw files is less than half of the number of peakfiles, use peak mode",logfile)
+            conf_dict['General']['mode'] = "binary"
+            wlog("the number of shared peak&bw files is less than half of the number of peakfiles, use binary mode",logfile)
         else:
             wlog("all checks for signal mode passed, use signal mode",logfile)
 
-    if conf_dict['General']['mode'] == "peak":
+    if conf_dict['General']['mode'] == "binary":
         conf_dict['General']['usefilename'] = conf_dict['General']['peakfilenames']
 
     wlog("%s cofactor candidates are included"%(len(conf_dict['General']['usefilename'])),logfile)

@@ -32,7 +32,7 @@ def step2_NC_detection(conf_dict,logfile):
     '''   
 
     # Rscript detectNonClassic.r outname signalname usePQ cutoff alpha lambdachoice topN tmpRpackgeDIR
-    if conf_dict['General']['mode'] == "peak":
+    if conf_dict['General']['mode'] == "binary":
         Rscript = """
 ### read parameter
 a<-commandArgs(T)

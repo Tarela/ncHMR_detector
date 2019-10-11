@@ -53,7 +53,7 @@ def step3_summary(conf_dict,logfile):
     sp("mv %s_cofactor_candidate_list.txt %s"%(conf_dict['General']['outname'],tmpresult))
     sp("mv %s_filterNC.txt %s"%(conf_dict['General']['outname'],tmpresult))
 
-    if conf_dict['General']['mode'] != "peak":
+    if conf_dict['General']['mode'] != "binary":
         sp("mv %s_TFsig.bed %s"%(conf_dict['General']['outname'],tmpresult))
 
     wlog('generate summary documents',logfile)
