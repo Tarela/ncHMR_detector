@@ -62,7 +62,7 @@ Download our pre-processed database for the binding sites of histone modificatio
 [Dropbox](https://www.dropbox.com/s/uc2hz9zpzl52t9k/mESC_peaks.tar.gz?dl=0) 
 [TongjiServer](http://compbio-zhanglab.org/release/mESC_peaks.tar.gz)  
 
-We also provided pre-processed bigwig tracks for users who are interested in the signal mode (-m signal)
+We also provided pre-processed bigwig tracks for users who are interested in the signal mode (-m signal). Download the tracks and put them into the bw signal folder (-b, --bwfolder)
 - K562 bigwig files (hg38) 
 [Dropbox](https://www.dropbox.com/s/qscpdi33r78w931/K562_bw.tar.gz?dl=0) 
 [TongjiServer](http://compbio-zhanglab.org/release/GM12878_bw.tar.gz) 
@@ -105,13 +105,17 @@ Different mode of ncHMR_detector, choose frombinary(default) and signal. Binary 
 (specify this parameter when using signal mode) Folder for cofactor bw signal tracks. Only take effect in signal (-m signal). Input the ABSOLUTE directory of bw files with this parameter, in order to use the signal of cofactors to predict the non-calssical function instead of peak overlap. Note that the files in the bwfolder should end with .bw and have the same name as the one in peak folder.
 
 Example for run ncHMR_detector with all default parameters:
-- binary mode (default)
+
+
+binary mode (default)
 ```sh
-$ ncHMR_detector -p /abspath/HMRpeak.bed -s /abspath/HMsignal.bw -f /abspath/K562_peaks/ -o outputname
+$ ncHMR_detector -p ${path}/HMRpeak.bed -s ${path}/HMsignal.bw -f ${path}/K562_peaks/ -o outputname
 ```
-- signal mode (optional)
+
+
+signal mode (optional)
 ```sh
-$ ncHMR_detector -p /abspath/HMRpeak.bed -s /abspath/HMsignal.bw -f /abspath/K562_peaks/ -o outputname -m signal -b /abspath/K562_bw/
+$ ncHMR_detector -p ${path}/HMRpeak.bed -s ${path}/HMsignal.bw -f ${path}/K562_peaks/ -o outputname -m signal -b ${path}/K562_bw/
 ```
 
 
@@ -164,9 +168,9 @@ $ pdflatex NAME_summary.tex
 
 ## 5. Testing data and example of output files
 We provided the testing data for users to test the flexibility and the power of the HMRpipe and the example of `summary.pdf` which generated from a new detected non-classic function in our recent studies. Click the file names to download. 
-- HMRpeaks: [`CBX7_peaks.bed`](https://www.dropbox.com/s/1kkow0nnmtkinv1/mESC_GSM1562337_CBX7.bed?dl=0)
-- signal: [`H3K27me3.bw`](https://www.dropbox.com/s/c5h9qf3qvetfe2s/mESC_GSM1399500_H3K27me3.bw?dl=0)
-- summary (output): [`CBX7_summary.pdf`](https://www.dropbox.com/s/cagfxfhdjq2hksg/mESC_GSM1562337_CBX7_summary.pdf?dl=0)
+- HMRpeaks: [`Dropbox`](https://www.dropbox.com/s/1kkow0nnmtkinv1/mESC_GSM1562337_CBX7.bed?dl=0)
+- signal: [`Dropbox`](https://www.dropbox.com/s/c5h9qf3qvetfe2s/mESC_GSM1399500_H3K27me3.bw?dl=0)
+- summary (output): [`Dropbox`](https://www.dropbox.com/s/cagfxfhdjq2hksg/mESC_GSM1562337_CBX7_summary.pdf?dl=0)
 
 ## 6. New python3 version comes!
 For those users who only have python3 on their machine, we now provided python3 version of ncHMR_detector! Simply go to the "ncHMR_detector_v1.3_py3" folder and install the package with python3. Note that the python3 version of ncHMR_detector is called "ncHMR_detector_py3". And users may need to pre-define the python3 enviroment/library before using the py3 version (see step1 as reference). 
