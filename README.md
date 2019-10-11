@@ -14,7 +14,7 @@ ncHMR_detector requires [python](https://www.python.org) 2.6+/3 and [R](https://
 
 \# for root user
 ```sh
-$ cd ncHMR_detector/ncHMR_detector_v1.3/
+$ cd ncHMR_detector/ncHMR_detector_v1.3_py2/
 $ sudo python setup.py install  
 ```
 \# if you are not root user, you can install HMRpipe at a specific location which you have write permission
