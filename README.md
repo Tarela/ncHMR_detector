@@ -182,4 +182,3 @@ For those users who only have python3 on their machine, we now provided python3 
 - v1.3 (2019.10.01) Add python3 version as the reviewer suggested
 
 
-
