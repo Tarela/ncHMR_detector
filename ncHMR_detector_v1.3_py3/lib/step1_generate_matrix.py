@@ -58,7 +58,7 @@ def step1_generate_matrix(conf_dict,logfile):
         outf = open(conf_dict['General']['outname']+"_TFsig.bed",'w')
         for line in inf:
             ll = line.split()
-            center = (int(ll[1]) + int(ll[2]))/2
+            center = int((int(ll[1]) + int(ll[2]))/2)
             start = max(0,center-1000)
             end = center + conf_dict['options']['ext']
             addsigALL = []
@@ -76,7 +76,7 @@ def step1_generate_matrix(conf_dict,logfile):
     outf = open(conf_dict['General']['outname']+"_HMsig.bed",'w')
     for line in inf:
         ll = line.split()
-        center = (int(ll[1]) + int(ll[2]))/2
+        center = int((int(ll[1]) + int(ll[2]))/2)
         start = max(0,center-conf_dict['options']['ext'])
         end = center + conf_dict['options']['ext']
         addsigALL = []

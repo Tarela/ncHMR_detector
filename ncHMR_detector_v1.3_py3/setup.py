@@ -10,8 +10,9 @@ import os
 import sys
 import subprocess
 import platform
-#from distutils.core import setup, Extension
-from setuptools import setup, find_packages
+from distutils.core import setup#, Extension
+import distutils.command.install_lib
+#from setuptools import setup, find_packages
 
 
 def sp(cmd):
@@ -26,7 +27,7 @@ def compile_bedtools():
     curdir = os.getcwd()
     os.chdir('refpackage/bedtools')
     sp('make 1>/dev/null 2>&1 ')
-    sp('chmod 755 *')
+    #sp('chmod 755 *')
     os.chdir(curdir)
     
 def check_bedtools():
@@ -40,7 +41,25 @@ def check_R():
     if checkhandle[0].strip() == "":
         return 0
     else:
-        return 1       
+        return 1   
+
+
+class my_install_lib(distutils.command.install_lib.install_lib):
+    def run(self):
+        distutils.command.install_lib.install_lib.run(self)
+        mode = 755
+        # here we start with doing our overriding and private magic ..
+        for filepath in self.get_outputs():
+            if "bigWigSummary" in filepath or "bedtools" in filepath:
+            #if self.install_scripts in filepath:
+            #    log.info("Overriding setuptools mode of scripts ...")
+            #    log.info("Changing ownership of %s to uid:%s gid %s" %
+            #             (filepath, uid, gid))
+            #    os.chown(filepath, uid, gid)
+            #    log.info("Changing permissions of %s to %s" %
+            #             (filepath, oct(mode)))
+                os.chmod(filepath, mode)
+
 def main(): 
 #    if sys.version_info[0] != 2 or sys.version_info[1] < 7:
 #	    print >> sys.stderr, "ERROR: ncHMR_detector requires Python 2.7"
@@ -59,10 +78,12 @@ def main():
         wlog("detected system is nither linux nor mac, try linux version of bigWigSummary",logfile)
         bwsum_software = "bigWigSummary_linux"
         
-    has_bedtools = check_bedtools()
+#    has_bedtools = check_bedtools()
+    has_bedtools=0
     print('Intalling ncHMR_detector, may take "several" minutes')
     if has_bedtools == 0:
         compile_bedtools()
+        sp('mv refpackage/bedtools/bin/bedtools lib/')
         setup(name="HMRpipe",
               version="1.3",
               description="ncHMR detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators",
@@ -71,13 +92,13 @@ def main():
               url='https://github.com/Tarela/ncHMR_detector.git',
               package_dir={'HMRpipe' : 'lib'},
               packages=['HMRpipe'],
-              package_data={'HMRpipe': [#'Config/template.conf',
+              package_data={'HMRpipe': ['%s'%bwsum_software,'bedtools',#'Config/template.conf',
                                       #'Rscript/analysis.r',
                                       #'Rscript/individual_qc.r',
                                       #'Rscript/readsbulkQC.r',
                                       #'Rscript/detectNonCanonical.r'
                                          ]},
-              scripts=['bin/ncHMR_detector_py3','refpackage/bedtools/bin/bedtools','refpackage/bwsummary/%s'%bwsum_software],
+              scripts=['bin/ncHMR_detector_py3'],#,'refpackage/bedtools/bin/bedtools','refpackage/bwsummary/%s'%bwsum_software],
                         
               classifiers=[
             'Development Status :: version1.3 finish',
@@ -89,12 +110,12 @@ def main():
             'Topic :: pipeline',
             ],
               requires=[],
+              cmdclass={'install_lib':my_install_lib}
           )
         print('bedtools is not detected under default PATH, bedtools is also installed')
-        print('Installation of ncHMR_detector is DONE')
+        #print('Installation of ncHMR_detector is DONE')
     
     else:
-        print("AAAAA\n\n\nAAAA")
         setup(name="HMRpipe",
               version="1.3",
               description="ncHMR detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators",
@@ -104,7 +125,7 @@ def main():
               package_dir={'HMRpipe' : 'lib'},
               packages=['HMRpipe'],
               #package_data={}
-              package_data={'lib/': ['%s'%bwsum_software]},#,#'Config/template.conf',
+              package_data={'HMRpipe': ['%s'%bwsum_software]},#,#'Config/template.conf',
                                       #'Rscript/analysis.r',
                                       #'Rscript/individual_qc.r',
                                       #'Rscript/readsbulkQC.r',
@@ -123,8 +144,12 @@ def main():
             'Topic :: pipeline',
             ],
               requires=[],
+              cmdclass={'install_lib':my_install_lib}
           )
-        print('Installation of ncHMR_detector is DONE')
+
+    import HMRpipe
+
+    print('Installation of ncHMR_detector is DONE')
 
 
 if __name__ == '__main__':

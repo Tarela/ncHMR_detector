@@ -15,6 +15,7 @@ import platform
 
 
 ### tool function
+import HMRpipe
 from HMRpipe.Utility        import (sp,
                                    sperr,
                                    pdf_name,
@@ -204,10 +205,12 @@ def step0_check_data(conf_dict,logfile):
         wlog("detected system is nither linux nor mac, try linux version of bigWigSummary",logfile)
         bwsum_software = "bigWigSummary_linux"
 
-    conf_dict['General']['bwsummary'] = bwsum_software
-
-    conf_dict['General']['bedtools'] = "bedtools"
-
+    conf_dict['General']['bwsummary'] = HMRpipe.__path__[0]+"/%s"%bwsum_software
+    if os.path.isfile(HMRpipe.__path__[0] + "/bedtools"):
+        conf_dict['General']['bedtools'] = HMRpipe.__path__[0] + "/bedtools"
+    else:
+        conf_dict['General']['bedtools'] = "bedtools"
+        
 
     ### check Rscript
     #if not 'Usage' in sperr('Rscript')[1] and not 'version' in sperr('Rscript')[1]:

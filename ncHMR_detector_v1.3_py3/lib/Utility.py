@@ -140,7 +140,7 @@ def bwsigAve(bwfile,chrm,start,end,software):
     cmd = '%s %s %s %s %s 1'%(software,bwfile,chrm,start,end)
 #    print sp(cmd)
     bwS = sp(cmd)[0].strip()
-    if bwS == "":
+    if len(bwS) == 0:#bwS == "":
         return 0
     else:
         sigAve = float( bwS)#numpy.array(map(float,sp(cmd)[0].strip().split("\t")))
