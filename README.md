@@ -1,12 +1,16 @@
-# HMRpipe: Detecting non-classic function of histone modification regulator with ChIP-seq intergration
+# ncHMR_detector: Detecting non-classic function of histone modification regulator with ChIP-seq intergration
 
 Histone modification regulators (HMR) play important roles in many biological process and function by catalyzing or binding known histone modifications. Abundant studies mapped the genome-wide profiles of HMRs through ChIP-Seq and most of them only focused on the relationship between HMRs and their known histone modification substrates. However, there were still some studies showed that several HMRs can bind to non-classic sites (defined as without colocalization of known histone modifications) which were involved in development, differentiation et al. Thus, HMRpipe is sepcifically designed for detecting non-classic function of given HMR and predicting the potential co-factors of the non-classic function.
 
 Idea of HMR non-classic function and the workflow for detection
 ![GitHub Logo](image/workflow.png)
 
+## 0. Try our new webserver!
+In case you don't want to install and run ncHMR_detector on your own machine but still interested in our method, we provided our new webserver for the online detection of the non-classical function. Simply provided us the data of your interested TF (ChIP-seq or other associated data) and we will do all the detections and explorations for you!
+Get more information and try our webserver at [ncHMR web detector](http://compbio-zhanglab.org/ncHMR_detector/index.php)
+
 ## 1. Installation
-HMRpipe requires [python](https://www.python.org) 2.6+/3 and [R](https://www.r-project.org) v2.14+ to run.
+ncHMR_detector requires [python](https://www.python.org) 2.6+/3 and [R](https://www.r-project.org) v2.14+ to run.
 
 \# for root user
 ```sh
@@ -40,31 +44,51 @@ $ apt-get install texlive-all
 ## 2. Download pre-processed database
 Download our pre-processed database for the binding sites of histone modification regulators (HMR) and transcription factor (TF) in different cell types/cell lines. The genome-wide binding sites for TFs are defined by published ChIP-seq data. We collected data for all the TFs with available ChIP-seq data in public domain, processed and generated a peak file for each TF in each cell line. Users can download the binding sites of all the TFs in given cell types and input the absolute path of the folder as a parameter of HMR (-f, --peakfolder). Users can also customarize the database by adding additional peak files for the specific TFs they interested in as the potential candidates of co-factors. Currently the built-in database support 
 - K562 peak files (hg38) 
-[Dropbox](https://www.dropbox.com/s/m3ocnlj52cfxg4y/K562_peaks.tar.gz?dl=0) 
+[Dropbox](https://www.dropbox.com/s/2l2ltsz77kfxzgr/K562_peaks.tar.gz?dl=0) 
 [TongjiServer](http://compbio-zhanglab.org/release/GM12878_peaks.tar.gz) 
 - GM12878 peak files (hg38) 
-[Dropbox](https://www.dropbox.com/s/v7jw59ljxe6l3ee/GM12878_peaks.tar.gz?dl=0) 
-[TongjiServer](http://compbio-zhanglab.org/release/K562_peaks.tar.gz)  
+[Dropbox](https://www.dropbox.com/s/h3mtjxeauq6bfmw/GM12878_peaks.tar.gz?dl=0) 
+[TongjiServer](http://compbio-zhanglab.org/release/GM12878_peaks.tar.gz)  
 - HepG2 peak files (hg38) 
-[Dropbox](https://www.dropbox.com/s/v7jw59ljxe6l3ee/GM12878_peaks.tar.gz?dl=0) 
+[Dropbox](https://www.dropbox.com/s/hpxcovw4m00sldf/HepG2_peaks.tar.gz?dl=0) 
 [TongjiServer](http://compbio-zhanglab.org/release/HepG2_peaks.tar.gz)  
 - Hela peak files (hg38) 
-[Dropbox](https://www.dropbox.com/s/v7jw59ljxe6l3ee/GM12878_peaks.tar.gz?dl=0) 
+[Dropbox](https://www.dropbox.com/s/rj7vjvl36sdg0pd/HeLa_peaks.tar.gz?dl=0) 
 [TongjiServer](http://compbio-zhanglab.org/release/HeLa_peaks.tar.gz)  
 - human ESC peak files (hg38) 
-[Dropbox](https://www.dropbox.com/s/l5bxq6g80hmqmhd/hESC_peaks.tar.gz?dl=0) 
+[Dropbox](https://www.dropbox.com/s/p2whnzpdpvmccdq/hESC_peaks.tar.gz?dl=0) 
 [TongjiServer](http://compbio-zhanglab.org/release/hESC_peaks.tar.gz)  
 - mouse ESC peak files (mm10) 
-[Dropbox](https://www.dropbox.com/s/t1jxtvvigybasnn/mESC_peaks.tar.gz?dl=0) 
+[Dropbox](https://www.dropbox.com/s/uc2hz9zpzl52t9k/mESC_peaks.tar.gz?dl=0) 
 [TongjiServer](http://compbio-zhanglab.org/release/mESC_peaks.tar.gz)  
+
+We also provided pre-processed bigwig tracks for users who are interested in the signal mode (-m signal)
+- K562 bigwig files (hg38) 
+[Dropbox](https://www.dropbox.com/s/qscpdi33r78w931/K562_bw.tar.gz?dl=0) 
+[TongjiServer](http://compbio-zhanglab.org/release/GM12878_bw.tar.gz) 
+- GM12878 bigwig files (hg38) 
+[Dropbox](https://www.dropbox.com/s/yp28jurr33hnejk/GM12878_bw.tar.gz?dl=0) 
+[TongjiServer](http://compbio-zhanglab.org/release/GM12878_bw.tar.gz)  
+- HepG2 bigwig files (hg38) 
+[Dropbox](https://www.dropbox.com/s/shgo0ejk9n6b7nu/HepG2_bw.tar.gz?dl=0) 
+[TongjiServer](http://compbio-zhanglab.org/release/HepG2_bw.tar.gz)  
+- Hela bigwig files (hg38) 
+[Dropbox](https://www.dropbox.com/s/951elvls1s8tn0o/HeLa_bw.tar.gz?dl=0) 
+[TongjiServer](http://compbio-zhanglab.org/release/HeLa_bw.tar.gz)  
+- human ESC bigwig files (hg38) 
+[Dropbox](https://www.dropbox.com/s/y99hsj957pyjhrb/hESC_bw.tar.gz?dl=0) 
+[TongjiServer](http://compbio-zhanglab.org/release/hESC_bw.tar.gz)  
+- mouse ESC bigwig files (mm10) 
+[Dropbox](https://www.dropbox.com/s/4hvyxqfxanzoa8f/mESC_bw.tar.gz?dl=0) 
+[TongjiServer](http://compbio-zhanglab.org/release/mESC_bw.tar.gz)  
 
 You can download by simply click the link on the cell type name and use the following command to extract the folder:
 ```sh
-$ tar xvzf K562_TFpeaks.tar.gz
-$ tar xvf K562_TFpeaks.tar  # used when your OS uncompress the package automatically
+$ tar xvzf K562_peaks.tar.gz
+$ tar xvf K562_peaks.tar  # used when your OS uncompress the package automatically
 ```
 
-## 3. Run HMRpipe (usage)
+## 3. Run ncHMR_detector (usage)
 #### Essential paramters
 To run HMRpipe with default parameters, you only need to give HMRpipe:
 -   -p HMRPEAK, --HMRpeak=HMRPEAK
@@ -75,11 +99,21 @@ bigWig file for histone modification (HM) signal, absolute path required
 the folder name for all the peak files of all the TF candidates (could be the folder you downloaded in step2, absolute path required)
 -   -o OUTNAME, --outname=OUTNAME
 output name, prefix name of your output files 
+-   -m MODE, --mode=MODE
+Different mode of ncHMR_detector, choose frombinary(default) and signal. Binary mode takes peaks.bed files of cofactor candidates while signal mode takes signaltrack.bw files. Make sure the filesfor cofactor candidates (in the directory specified by-b/--bwfolder) end with '.bw'(for signal mode)
+-   -b BWFOLDER, --bwfolder=BWFOLDER
+(specify this parameter when using signal mode) Folder for cofactor bw signal tracks. Only take effect in signal (-m signal). Input the ABSOLUTE directory of bw files with this parameter, in order to use the signal of cofactors to predict the non-calssical function instead of peak overlap. Note that the files in the bwfolder should end with .bw and have the same name as the one in peak folder.
 
-Example for run HMRpipe with all default parameters:
+Example for run ncHMR_detector with all default parameters:
+binary mode (default)
 ```sh
-$ HMR -p /abspath/HMRpeak.bed -s /abspath/HMsignal.bw -f /abspath/K562_TFpeaks/ -o outputname
+$ ncHMR_detector -p /abspath/HMRpeak.bed -s /abspath/HMsignal.bw -f /abspath/K562_peaks/ -o outputname
 ```
+signal mode (optional)
+```sh
+$ ncHMR_detector -p /abspath/HMRpeak.bed -s /abspath/HMsignal.bw -f /abspath/K562_peaks/ -o outputname -m signal -b /abspath/K562_bw/
+```
+
 
 #### options
 You can also specify the following options for more accurate prediction results:
@@ -91,6 +125,8 @@ Cutoff of P-value, default is 0.001
 The alpha parameters for elasticNet, choose from 0~1, 1 for lasso and 0 for ridge, default is 0.5
 -  -\-LambdaChoice=LAMBDACHOICE
 Solution to determine Lambda (choose from 1se and min, default is 1se. "min" is the value at which the minimal mean squared error is achieved and "1se" is for the most regularized model whose mean squared error is within one standard error of the minimal.)
+-  -\-Rsquare=RCUTOFF
+Cutoff of Rsquare in uni-variate linear regression step, choose from 0~1, default is 0.1. The suggested Rsquare cutoff for mode:signal is 0.05.
 -  -\-TopNcofactors=TOPNCOFACTORS
 TopN predicted co-factors with highest association with non-classic function is reported (choose any number or all(default) to report topN predicted co-factors that pass the thresholds)
 -  -\-overwrite
@@ -128,14 +164,17 @@ $ pdflatex NAME_summary.tex
 
 ## 5. Testing data and example of output files
 We provided the testing data for users to test the flexibility and the power of the HMRpipe and the example of `summary.pdf` which generated from a new detected non-classic function in our recent studies. Click the file names to download. 
-- HMRpeaks: [`CBX7_peaks.bed`](https://www.python.org)
-- signal: [`H3K27me3.bw`](https://www.python.org)
-- summary (output): [`CBX7_summary.pdf`](https://www.python.org)
+- HMRpeaks: [`CBX7_peaks.bed`](https://www.dropbox.com/s/1kkow0nnmtkinv1/mESC_GSM1562337_CBX7.bed?dl=0)
+- signal: [`H3K27me3.bw`](https://www.dropbox.com/s/c5h9qf3qvetfe2s/mESC_GSM1399500_H3K27me3.bw?dl=0)
+- summary (output): [`CBX7_summary.pdf`](https://www.dropbox.com/s/cagfxfhdjq2hksg/mESC_GSM1562337_CBX7_summary.pdf?dl=0)
 
+## 6. New python3 version comes!
+For those users who only have python3 on their machine, we now provided python3 version of ncHMR_detector! Simply go to the "ncHMR_detector_v1.3_py3" folder and install the package with python3. Note that the python3 version of ncHMR_detector is called "ncHMR_detector_py3". And users may need to pre-define the python3 enviroment/library before using the py3 version (see step1 as reference). 
 
-
-## 6. Change log
-v1.0 (2019.01.10) The first released version, which generates the results of the paper.
-
+## 7. Change log
+v1.0 (2019.01.10) The first released version, which generates the results of the paper
+v1.1 (2019.04.10) Fully documented, for paper submission 
+v1.2 (2019.09.10) Add signal mode and other details according to the reviewers' suggestions
+v1.3 (2019.10.01) Add python3 version as the reviewer suggested
 
 
