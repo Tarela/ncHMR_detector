@@ -147,7 +147,7 @@ def main():
               cmdclass={'install_lib':my_install_lib}
           )
 
-    import HMRpipe
+    #import HMRpipe
 
     print('Installation of ncHMR_detector is DONE')
 
