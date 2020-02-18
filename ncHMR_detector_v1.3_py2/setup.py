@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 """Description
 Setup script for "ncHMR detector: a computational framework to systematically reveal non-classical functions of histone-modification regulators"
 Copyright (c) 2019 Shengen Hu <tarelahu@gmail.com>

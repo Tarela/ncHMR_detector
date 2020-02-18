@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-
+ 
 Function declare:
  
 def CMD                  (cmd)
