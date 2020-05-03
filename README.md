@@ -182,4 +182,5 @@ For those users who only have python3 on their machine, we now provided python3 
 - v1.2 (2019.09.10) Add signal mode and other details according to the reviewers' suggestions
 - v1.3 (2019.10.01) Add python3 version as the reviewer suggested
 
-
+## 8. Citation
+Hu, S., Huo, D., Yu, Z. et al. ncHMR detector: a computational framework to systematically reveal non-classical functions of histone modification regulators. Genome Biol 21, 48 (2020). https://doi.org/10.1186/s13059-020-01953-0
